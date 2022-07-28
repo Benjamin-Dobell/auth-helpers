@@ -1,5 +1,11 @@
 # @supabase/auth-helpers-nextjs
 
+## 0.3.0
+
+### Minor Changes
+
+- Supabase URL and anonymous key now manually configurable
+
 ## 0.2.5
 
 ### Patch Changes
