@@ -1,5 +1,11 @@
 # @supabase/auth-helpers-nextjs
 
+## 0.3.1
+
+### Patch Changes
+
+- Logging
+
 ## 0.3.0
 
 ### Minor Changes

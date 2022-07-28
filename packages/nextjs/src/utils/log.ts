@@ -1,8 +1,6 @@
-const dev = process.env.NODE_ENV !== 'production';
-
 const logger = {
   log: (message?: any, ...optionalParams: any[]) => {
-    dev ? console.log(message, ...optionalParams) : null;
+    console.log(message, ...optionalParams);
   },
   error: (message?: any, ...optionalParams: any[]) => {
     console.error(message, ...optionalParams);
@@ -14,7 +12,7 @@ const logger = {
     logger.log(message, ...optionalParams);
   },
   warn: (message?: any, ...optionalParams: any[]) => {
-    dev ? logger.error(message, ...optionalParams) : null;
+    logger.error(message, ...optionalParams);
   }
 };
 

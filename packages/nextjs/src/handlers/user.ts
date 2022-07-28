@@ -84,6 +84,7 @@ export default async function handleUser(
       logger.info('JWTPayloadFailed error has happened!');
       response.error = e.toObj();
     } else if (e instanceof AuthHelperError) {
+      logger.debug(`Unauthenticated: ${JSON.stringify(e.toObj())}`);
       // do nothing because since this just means the user isn't logged in
     } else {
       const error = e as ApiError;
