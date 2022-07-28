@@ -1,20 +1,18 @@
 import { createClient } from '@supabase/supabase-js';
-export { SupabaseClient } from '@supabase/supabase-js';
 
-const getClientWithEnvCheck = () => {
-  if (
-    !process.env.NEXT_PUBLIC_SUPABASE_URL ||
-    !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-  ) {
+const getClientWithEnvCheck = (
+  supabaseUrl: string | undefined = process.env.NEXT_PUBLIC_SUPABASE_URL,
+  supabaseAnonKey: string | undefined = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+) => {
+  if (!supabaseUrl || !supabaseAnonKey) {
     throw new Error(
-      'NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY env variables are required!'
+      'supabaseUrl and supabaseAnonKey env variables are required!'
     );
   }
-  return createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    { autoRefreshToken: false, persistSession: false }
-  );
+  return createClient(supabaseUrl, supabaseAnonKey, {
+    autoRefreshToken: false,
+    persistSession: false
+  });
 };
 
-export const supabaseClient = getClientWithEnvCheck();
+export { getClientWithEnvCheck };

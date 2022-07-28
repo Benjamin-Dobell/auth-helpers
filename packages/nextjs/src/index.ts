@@ -8,5 +8,5 @@ export { getProviderToken } from './utils/getProviderToken';
 export { default as withPageAuth } from './utils/withPageAuth';
 export { default as withApiAuth } from './utils/withApiAuth';
 export { default as supabaseServerClient } from './utils/supabaseServerClient';
-export { supabaseClient, SupabaseClient } from './utils/initSupabase';
+export { createSupabaseClient, SupabaseClient } from './instance';
 export { default as logger } from './utils/log';

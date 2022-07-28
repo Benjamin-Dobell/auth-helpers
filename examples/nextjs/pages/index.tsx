@@ -1,9 +1,9 @@
 import { useUser } from '@supabase/auth-helpers-react';
-import { supabaseClient } from '@supabase/auth-helpers-nextjs';
 import type { NextPage } from 'next';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { Auth } from '@supabase/ui';
+import { supabaseClient } from '../lib/db';
 
 const LoginPage: NextPage = () => {
   const { isLoading, user, error } = useUser();

@@ -6,7 +6,7 @@ import {
   NextResponseAdapter 
 } from '@supabase/auth-helpers-shared';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { supabaseClient } from '../utils/initSupabase';
+import { createSupabaseClient } from "../instance";
 
 export interface HandleLogoutOptions {
   cookieOptions?: CookieOptions;
@@ -25,6 +25,7 @@ export default function handleLogout(
   const cookieOptions = { ...COOKIE_OPTIONS, ...options.cookieOptions };
 
   // Logout request to Gotrue
+  const { supabaseClient } = createSupabaseClient();
   const access_token = req.cookies[`${cookieOptions.name}-access-token`];
   if (access_token) supabaseClient.auth.api.signOut(access_token);
 

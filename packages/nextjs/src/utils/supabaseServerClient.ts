@@ -1,5 +1,5 @@
 import { GetServerSidePropsContext, NextApiRequest } from 'next';
-import { supabaseClient, SupabaseClient } from './initSupabase';
+import { createSupabaseClient, SupabaseClient } from "../instance";
 import { CookieOptions } from '@supabase/auth-helpers-shared';
 
 /**
@@ -19,7 +19,6 @@ import { CookieOptions } from '@supabase/auth-helpers-shared';
  * }
  * ```
  *
- * @param supabaseClient
  * @param context
  * @param cookieOptions
  * @returns supabaseClient
@@ -33,6 +32,7 @@ export default function supabaseServerClient(
     name: 'sb'
   }
 ): SupabaseClient {
+  const { supabaseClient } = createSupabaseClient();
   if (!context.req.cookies) {
     return supabaseClient;
   }
